@@ -1,5 +1,7 @@
 module Vector
 
+import Fin
+
 %access public export
 %default total
 
@@ -75,3 +77,7 @@ append (x::xs) ys = x :: append xs ys
 transpose : Vector n (Vector m a) -> Vector m (Vector n a)
 transpose Nil = replicate _ Nil
 transpose (x::xs) = zipWith (::) x $ transpose xs
+
+index : Fin n -> Vector n a -> a
+index FZ (x::xs) = x
+index (FS n) (x::xs) = index n xs
