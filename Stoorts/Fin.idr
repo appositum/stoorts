@@ -1,4 +1,4 @@
-module Fin
+module Stoorts.Fin
 
 %access public export
 %default total

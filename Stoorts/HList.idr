@@ -1,7 +1,7 @@
-module HList
+module Stoorts.HList
 
-import Fin
-import Vector
+import Stoorts.Fin
+import Stoorts.Vector
 
 %access public export
 %default total
