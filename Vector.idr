@@ -81,3 +81,9 @@ transpose (x::xs) = zipWith (::) x $ transpose xs
 index : Fin n -> Vector n a -> a
 index FZ (x::xs) = x
 index (FS n) (x::xs) = index n xs
+
+filter : (a -> Bool) -> Vector n a -> (m ** Vector m a)
+filter _ Nil = (_ ** Nil)
+filter p (x::xs) =
+  let (_ ** rest) = filter p xs in
+  if p x then (_ ** x :: rest) else (_ ** rest)
