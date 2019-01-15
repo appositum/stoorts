@@ -70,9 +70,9 @@ zipWith f (x::xs) (y::ys) = f x y :: zipWith f xs ys
 zip : Vector n a -> Vector n b -> Vector n (a, b)
 zip = zipWith MkPair
 
-append : Vector n a -> Vector m a -> Vector (n + m) a
-append Nil ys = ys
-append (x::xs) ys = x :: append xs ys
+(++) : Vector n a -> Vector m a -> Vector (n + m) a
+Nil ++ ys = ys
+(x::xs) ++ ys = x :: (xs ++ ys)
 
 transpose : Vector n (Vector m a) -> Vector m (Vector n a)
 transpose Nil = replicate _ Nil
