@@ -10,6 +10,15 @@ data HList : (n : Nat) -> Vector n Type -> Type where
   Nil  : HList Z []
   (::) : t -> HList n ts -> HList (S n) (t::ts)
 
+private
+ZipType : Vector n Type -> Vector n Type -> Vector n Type
+ZipType Nil Nil = Nil
+ZipType (x::xs) (y::ys) = (x,y) :: ZipType xs ys
+
+zip : HList n xs -> HList n ys -> HList n (ZipType xs ys)
+zip Nil Nil = Nil
+zip (x::xs) (y::ys) = (x,y) :: zip' xs ys
+
 get : (fin : Fin n) -> HList n ts -> index fin ts
 get FZ (x::_) = x
 get (FS n) (_::xs) = get n xs
