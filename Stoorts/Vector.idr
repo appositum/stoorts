@@ -87,3 +87,11 @@ filter _ Nil = (_ ** Nil)
 filter p (x::xs) =
   let (_ ** rest) = filter p xs in
   if p x then (_ ** x :: rest) else (_ ** rest)
+
+init : Vector (S n) a -> Vector n a
+init (_::Nil) = Nil
+init (x::y::ys) = x :: init (y::ys)
+
+last : Vector (S n) a -> a
+last (x::Nil) = x
+last (_::y::ys) = last (y::ys)
