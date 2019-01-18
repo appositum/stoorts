@@ -95,3 +95,11 @@ init (x::y::ys) = x :: init (y::ys)
 last : Vector (S n) a -> a
 last (x::Nil) = x
 last (_::y::ys) = last (y::ys)
+
+take : (n : Nat) -> Vector (n + m) a -> Vector n a
+take Z _ = Nil
+take (S n) (x::xs) = x :: take n xs
+
+drop : (n : Nat) -> Vector (n + m) a -> Vector m a
+drop Z xs = xs
+drop (S n) (_::xs) = drop n xs
