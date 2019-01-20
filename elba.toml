@@ -1,0 +1,11 @@
+[package]
+name = "stoorts/stoorts"
+version = "0.1.0"
+authors = []
+
+[dependencies]
+
+[[targets.bin]]
+path = "src"
+name = "stoorts"
+main = "Stoorts"

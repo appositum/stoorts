@@ -1,0 +1,12 @@
+package stoorts
+
+sourcedir = src
+
+modules = Stoorts
+        , Stoorts.Fin
+        , Stoorts.HList
+        , Stoorts.Vector
+
+main = Stoorts
+
+opts = "--total"
