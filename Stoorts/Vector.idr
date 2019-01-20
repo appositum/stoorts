@@ -70,6 +70,23 @@ zipWith f (x::xs) (y::ys) = f x y :: zipWith f xs ys
 zip : Vector n a -> Vector n b -> Vector n (a, b)
 zip = zipWith MkPair
 
+zipWith3 : (a -> b -> c -> d) -> Vector n a -> Vector n b -> Vector n c -> Vector n d
+zipWith3 _ Nil Nil Nil = Nil
+zipWith3 f (x::xs) (y::ys) (z::zs) = f x y z :: zipWith3 f xs ys zs
+
+zip3 : Vector n a -> Vector n b -> Vector n c -> Vector n (a, b, c)
+zip3 = zipWith3 (\x,y,z => (x,y,z))
+
+unzip : Vector n (a, b) -> (Vector n a, Vector n b)
+unzip Nil = (Nil, Nil)
+unzip ((a,b)::xs) with (unzip xs)
+  | (as, bs) = (a::as, b::bs)
+
+unzip3 : Vector n (a, b, c) -> (Vector n a, Vector n b, Vector n c)
+unzip3 Nil = (Nil, Nil, Nil)
+unzip3 ((a,b,c)::xs) with (unzip3 xs)
+  | (as, bs, cs) = (a::as, b::bs, c::cs)
+
 (++) : Vector n a -> Vector m a -> Vector (n + m) a
 Nil ++ ys = ys
 (x::xs) ++ ys = x :: (xs ++ ys)
