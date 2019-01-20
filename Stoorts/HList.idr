@@ -14,9 +14,17 @@ ZipType : Vector n Type -> Vector n Type -> Vector n Type
 ZipType Nil Nil = Nil
 ZipType (x::xs) (y::ys) = (x,y) :: ZipType xs ys
 
+ZipType3 : Vector n Type -> Vector n Type -> Vector n Type -> Vector n Type
+ZipType3 Nil Nil Nil = Nil
+ZipType3 (x::xs) (y::ys) (z::zs) = (x,y,z) :: ZipType3 xs ys zs
+
 zip : HList n xs -> HList n ys -> HList n (ZipType xs ys)
 zip Nil Nil = Nil
 zip (x::xs) (y::ys) = (x,y) :: zip xs ys
+
+zip3 : HList n xs -> HList n ys -> HList n zs -> HList n (ZipType3 xs ys zs)
+zip3 Nil Nil Nil = Nil
+zip3 (x::xs) (y::ys) (z::zs) = (x,y,z) :: zip3 xs ys zs
 
 get : (fin : Fin n) -> HList n ts -> index fin ts
 get FZ (x::_) = x
