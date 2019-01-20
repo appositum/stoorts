@@ -11,19 +11,19 @@ data HList : (n : Nat) -> Vector n Type -> Type where
   (::) : t -> HList n ts -> HList (S n) (t::ts)
 
 ZipType : Vector n Type -> Vector n Type -> Vector n Type
-ZipType Nil Nil = Nil
+ZipType [] [] = []
 ZipType (x::xs) (y::ys) = (x,y) :: ZipType xs ys
 
 ZipType3 : Vector n Type -> Vector n Type -> Vector n Type -> Vector n Type
-ZipType3 Nil Nil Nil = Nil
+ZipType3 [] [] [] = []
 ZipType3 (x::xs) (y::ys) (z::zs) = (x,y,z) :: ZipType3 xs ys zs
 
 zip : HList n xs -> HList n ys -> HList n (ZipType xs ys)
-zip Nil Nil = Nil
+zip [] [] = []
 zip (x::xs) (y::ys) = (x,y) :: zip xs ys
 
 zip3 : HList n xs -> HList n ys -> HList n zs -> HList n (ZipType3 xs ys zs)
-zip3 Nil Nil Nil = Nil
+zip3 [] [] [] = []
 zip3 (x::xs) (y::ys) (z::zs) = (x,y,z) :: zip3 xs ys zs
 
 get : (fin : Fin n) -> HList n ts -> index fin ts
@@ -37,15 +37,15 @@ tail : HList (S n) (t::ts) -> HList n ts
 tail (_::xs) = xs
 
 init : HList (S n) ts -> HList n (init ts)
-init (_::Nil) = Nil
+init (_::[]) = []
 init (x::y::ys) = x :: init (y::ys)
 
 last : HList (S n) ts -> last ts
-last (x::Nil) = x
+last (x::[]) = x
 last (_::y::ys) = last (y::ys)
 
 (++) : HList n txs -> HList m tys -> HList (n + m) (txs ++ tys)
-Nil ++ ys = ys
+[] ++ ys = ys
 (x::xs) ++ ys = x :: (xs ++ ys)
 
 length : HList n ts -> Nat
