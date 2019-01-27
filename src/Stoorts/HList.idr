@@ -58,3 +58,7 @@ lengthProof _ = Refl
 private
 lengthProof' : (xs : HList n ts) -> length xs = length ts
 lengthProof' _ = Refl
+
+toHList : (xs : List a) -> let len = length xs in HList len (replicate len a)
+toHList [] = []
+toHList (x::xs) = x :: toHList xs
