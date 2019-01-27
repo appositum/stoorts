@@ -26,9 +26,9 @@ zip3 : HList n xs -> HList n ys -> HList n zs -> HList n (ZipType3 xs ys zs)
 zip3 [] [] [] = []
 zip3 (x::xs) (y::ys) (z::zs) = (x,y,z) :: zip3 xs ys zs
 
-get : (fin : Fin n) -> HList n ts -> index fin ts
-get FZ (x::_) = x
-get (FS n) (_::xs) = get n xs
+index : (fin : Fin n) -> HList n ts -> index fin ts
+index FZ (x::_) = x
+index (FS n) (_::xs) = index n xs
 
 head : HList (S n) (t::ts) -> t
 head (x::_) = x
