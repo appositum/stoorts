@@ -1,6 +1,6 @@
 module Stoorts.Vector
 
-import Stoorts.Fin
+import Data.Fin
 
 %access public export
 %default total

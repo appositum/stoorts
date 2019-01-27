@@ -1,6 +1,6 @@
 module Stoorts.HList
 
-import Stoorts.Fin
+import Data.Fin
 import Stoorts.Vector
 
 %access public export
