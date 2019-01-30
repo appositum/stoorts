@@ -48,6 +48,14 @@ last (_::y::ys) = last (y::ys)
 [] ++ ys = ys
 (x::xs) ++ ys = x :: (xs ++ ys)
 
+take : (n : Nat) -> HList (n + m) ts -> HList n (take n ts)
+take Z _ = []
+take (S n) (x::xs) = x :: take n xs
+
+drop : (n : Nat) -> HList (n + m) ts -> HList m (drop n ts)
+drop Z xs = xs
+drop (S n) (x::xs) = drop n xs
+
 length : HList n ts -> Nat
 length {n} _ = n
 
