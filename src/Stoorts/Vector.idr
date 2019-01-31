@@ -95,9 +95,10 @@ transpose : Vector n (Vector m a) -> Vector m (Vector n a)
 transpose [] = replicate _ []
 transpose (x::xs) = zipWith (::) x $ transpose xs
 
-index : Fin n -> Vector n a -> a
-index FZ (x::xs) = x
-index (FS n) (x::xs) = index n xs
+infixl 9 !!
+(!!) : Vector n a -> Fin n -> a
+(x::_) !! FZ = x
+(_::xs) !! (FS n) = xs !! n
 
 filter : (a -> Bool) -> Vector n a -> (m ** Vector m a)
 filter _ [] = (_ ** [])
