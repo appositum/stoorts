@@ -5,7 +5,10 @@ authors = []
 
 [dependencies]
 
-[[targets.bin]]
+[targets.lib]
 path = "src"
-name = "stoorts"
-main = "Stoorts"
+mods = [
+  "Stoorts",
+  "Stoorts.HList",
+  "Stoorts.Vector",
+]
