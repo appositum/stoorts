@@ -121,3 +121,21 @@ take (S n) (x::xs) = x :: take n xs
 drop : (n : Nat) -> Vector (n + m) a -> Vector m a
 drop Z xs = xs
 drop (S n) (_::xs) = drop n xs
+
+takeWhile : (a -> Bool) -> Vector n a -> (m ** Vector m a)
+takeWhile p [] = (0 ** [])
+takeWhile p (x::xs) =
+  let (_ ** rest) = takeWhile p xs
+  in if p x then (_ ** x :: rest) else (_ ** [])
+
+elem : Eq a => a -> Vector n a -> Bool
+elem a = foldr (\x, acc => if x == a then True else acc) False
+
+lookup : Eq k => k -> Vector n (k, v) -> Maybe v
+lookup _ [] = Nothing
+lookup a ((key, val) :: pairs) =
+  if key == a then Just val else lookup a pairs
+
+find : (a -> Bool) -> Vector n a -> Maybe a
+find _ [] = Nothing
+find p (x::xs) = if p x then Just x else find p xs
