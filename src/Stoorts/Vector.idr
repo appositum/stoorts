@@ -37,7 +37,7 @@ Foldable (Vector n) where
 
 Traversable (Vector n) where
   traverse _ [] = pure []
-  traverse f (x::xs) = (::) <$> f x <*> traverse f xs
+  traverse f (x::xs) = [| f x :: traverse f xs |]
 
 Show a => Show (Vector n a) where
   show = show . toList
