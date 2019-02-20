@@ -1,0 +1,18 @@
+language: nix
+
+before_install:
+  - nix-channel --update && nix-env --upgrade
+
+install:
+  - nix-env -f "<nixpkgs>" -iA idris
+  - mkdir -p ~/.local/bin
+  - export PATH=$HOME/.local/bin:$PATH
+  - wget https://github.com/elba/elba/releases/download/0.2.0/elba-0.2.0-x86_64-unknown-linux-gnu.tar.gz -O elba.tar.gz
+  - tar -zxvf elba.tar.gz
+  - mv elba ~/.local/bin
+
+script:
+  - elba build --build-threads 4
+
+notifications:
+  email: false
