@@ -137,5 +137,4 @@ lookup a ((key, val) :: pairs) =
   if key == a then Just val else lookup a pairs
 
 find : (a -> Bool) -> Vector n a -> Maybe a
-find _ [] = Nothing
-find p (x::xs) = if p x then Just x else find p xs
+find p = foldr (\x,z => if p x then Just x else z) Nothing
