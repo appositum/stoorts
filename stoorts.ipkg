@@ -4,6 +4,7 @@ sourcedir = src
 
 modules = Stoorts
         , Stoorts.HList
+        , Stoorts.Parity
         , Stoorts.Vector
 
 main = Stoorts
