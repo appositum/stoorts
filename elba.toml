@@ -10,6 +10,7 @@ path = "src"
 mods = [
   "Stoorts",
   "Stoorts.HList",
+  "Stoorts.Literal",
   "Stoorts.Parity",
   "Stoorts.Vector",
 ]
