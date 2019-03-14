@@ -3,8 +3,10 @@ package stoorts
 sourcedir = src
 
 modules = Stoorts
+        , Stoorts.Even
         , Stoorts.HList
         , Stoorts.Literal
+        , Stoorts.Odd
         , Stoorts.Parity
         , Stoorts.Vector
 

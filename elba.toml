@@ -9,8 +9,10 @@ authors = []
 path = "src"
 mods = [
   "Stoorts",
+  "Stoorts.Even",
   "Stoorts.HList",
   "Stoorts.Literal",
+  "Stoorts.Odd",
   "Stoorts.Parity",
   "Stoorts.Vector",
 ]
