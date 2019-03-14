@@ -4,7 +4,6 @@ import Data.Fin
 import Stoorts.Vector
 
 %access public export
-%default total
 
 data HList : Vector n Type -> Type where
   Nil  : HList []

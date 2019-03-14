@@ -16,3 +16,4 @@ mods = [
   "Stoorts.Parity",
   "Stoorts.Vector",
 ]
+idris_opts = ["--total"]

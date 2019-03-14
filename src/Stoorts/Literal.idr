@@ -1,7 +1,6 @@
 module Stoorts.Literal
 
 %access public export
-%default total
 
 data BinChar : Char -> Type where
   O : BinChar '0'

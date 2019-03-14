@@ -1,7 +1,6 @@
 module Stoorts.Parity
 
 %access public export
-%default total
 
 data Parity : Nat -> Type where
   Even : Parity (n + n)

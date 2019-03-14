@@ -3,7 +3,6 @@ module Stoorts.Vector
 import Data.Fin
 
 %access public export
-%default total
 
 data Vector : Nat -> Type -> Type where
   Nil  : Vector Z a

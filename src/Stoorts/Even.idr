@@ -1,7 +1,6 @@
 module Stoorts.Even
 
 %access public export
-%default total
 
 data Even : Nat -> Type where
   EvenZ : Even Z
